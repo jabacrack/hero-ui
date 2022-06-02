@@ -8,8 +8,10 @@
     /*padding: 0 16px 16px;*/
     margin: 13px 0 0;
     /*margin:0 0 1.0em;*/
-    /*padding:0.5em;*/
+
     /*margin-top:0.5em;*/
+    display: flex;
+    flex-flow: column;
 }
 
 .box > .header {
@@ -19,6 +21,7 @@
     /*overflow: hidden;*/
     display: flex;
     transform: translate(0, -13px);
+    /*flex-flow: column;*/
 }
 
 .box > .header > span {
@@ -35,7 +38,7 @@
 
 .header::before,
 .header::after {
-background: green;
+/*background: green;*/
     /*height: 8px;*/
     /*transform: translate(0, -13px);*/
 }
@@ -74,15 +77,22 @@ background: green;
     text-decoration: none;
 }
 
-.box dl, .box_drag dl {
+.box .row, .box_drag .row {
+    display: flex;
+    /*background:#F6F6F9 none repeat scroll 0;*/
     background:#F6F6F9 none repeat scroll 0;
+    margin: 0 0.5em;
     /*border:1px solid #CCCCCC;*/
-    margin:0 0 1.0em;
-    padding:0.5em;
-    margin-top:0.5em;
+    /*margin:0 0 1.0em;*/
+    /*padding:0.5em;*/
+    /*margin-top:0.5em;*/
     /*position: relative;*/
     /*clear: both;*/
     /*display: flex;*/
+}
+.box::after, .box_drag::after {
+    content: '';
+    margin-bottom: 0.5em;
 }
 /*.box, .box_drag .row {*/
 /*    text-align: center;*/
@@ -91,14 +101,14 @@ background: green;
 /*    width:95%;*/
 /*}*/
 
-.box dt, .box_drag dt {
+.row .title {
     flex-grow: 1;
     text-align: left;
     font-weight:bold;
-    float: left;
+    /*float: left;*/
     /*display: block;*/
 }
-.box dd, .box_drag dd{
+.row .value{
     text-align: right;
 
     /*display: block;*/
