@@ -1,0 +1,1344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>gv: Сепулькатор</title>                
+	<script src="hero_files/lang_ru.js" type="text/javascript"></script>
+	
+    <script src="hero_files/defaults.js" type="text/javascript"></script>
+		<script src="hero_files/sound.js" type="text/javascript"></script>
+		<script src="hero_files/sm.js" type="text/javascript"></script>		
+    <script src="hero_files/ipce.js" type="text/javascript"></script>
+		
+		<script src="hero_files/Orbited.js" type="text/javascript"></script>
+		<script>
+  document.domain = document.domain;
+  Orbited.settings.port = 80;
+  Orbited.settings.hostname = 'push.godville.net';
+  GvPushPort = '61613'
+  TCPSocket = Orbited.TCPSocket;
+</script> 	
+		<script src="hero_files/gclient.js" type="text/javascript"></script>
+		<script src="hero_files/cm_js.js" type="text/javascript"></script>				
+		<script src="hero_files/cm.js" type="text/javascript"></script>
+		<script> window.gv_debug = false; Event.observe(window, 'load', function() { proto = new JsProto(); so = new HeroStatusObserver(0); Hero.init(proto, undefined, so, 0, 'ws://ws.godville.net:81/hero', undefined, undefined); }); </script> 		
+		
+		<script src="hero_files/cookies.js" type="text/javascript"></script>
+		<script src="hero_files/hero.js" type="text/javascript"></script>
+    <link href="hero_files/hero.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="hero_files/common.css" media="screen" rel="stylesheet" type="text/css">
+		<link href="hero_files/common-mini.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="hero_files/progress_bar.css" media="screen" rel="stylesheet" type="text/css">
+
+				
+
+    <link rel="shortcut icon" href="http://godville.net/images/favicon.ico">
+  <style type="text/css">
+.label-appended {
+	float: left;
+	margin-left: 1em;
+}
+
+#arena_say_box a {
+	margin-left: 1em;
+}
+
+#stats_log {
+	width: 90%;
+	overflow-x: hidden;
+	white-space: nowrap;
+	margin: auto;
+}
+
+#stats_log li {
+	display: inline;
+	list-item-style: none;
+	margin-left: 0.5em;
+}
+
+#stats_log .prana   { color: #199bdc; }
+#stats_log .exp     { color: #f9b436; }
+#stats_log .task    { color: pink; }
+#stats_log .level   { color: red; font-weight: bold; }
+#stats_log .inv     { color: sienna; }
+#stats_log .heal    { color: green; }
+#stats_log .gold    { color: orangered; }
+#stats_log .monster { color: darkmagenta; }
+#stats_log .death   { color: red; }
+#stats_log .brick   { color: mediumblue; }
+
+
+#timeout_bar {
+	height: 3px;
+	width: 0px;
+	display: block;
+	position: fixed;
+	z-index: 2;
+	opacity: 0.5;
+	top: 0px;
+	left: 0px;
+	background: blue;
+}
+
+#ui_menu_bar {
+	font-size: 90%;
+	text-align: center;
+}
+
+#ui_menu_bar li {
+	display: inline;
+	padding: 0 0.3em;
+}
+#ui_menu_bar ul {
+	list-style: none outside none;
+	margin: -0.7em 0 0.7em 0;
+	padding: 0;
+}
+#ui_menu_bar a {
+	text-decoration: none;
+}
+
+#reformal {
+	color: magenta;
+}
+
+#informer_bar {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+#informer_bar div {
+	float: right;
+	margin: 0.2em 1em;
+	padding: 0.1em 0.5em;
+	background: Beige;
+	border: 1px solid orange;
+	cursor: pointer;
+}</style></head>
+  <body>
+			
+    
+<div id="page_wrapper"><div id="informer_bar"></div>
+	<div id="menu_bar">
+	  <ul>
+    
+      <li class="menu_item" id="menu_top"><b>Приветствуем, о Сепулькатор!</b></li> 
+    
+
+		<span style="" id="new_msg" title="Обновите блок переписки, чтобы этот символ исчез.">✉</span>
+  
+    
+    
+			
+			<li><a href="http://godville.net/news">газета</a> </li> |
+			
+      <li id="m_hero">
+				<a href="http://godville.net/superhero">супер</a>герой
+
+				
+				<a href="http://godville.net/hero/toggle_turbo"><img alt="turbo switch" id="turbo_light" src="hero_files/l_green.gif" title="Турбо работает! Но если вдруг данные перестанут обновляться - попробуйте его отключить и прочитать советы в FAQ." border="0"></a>
+				
+			|
+			</li> 
+
+			
+      	<li><a href="http://godville.net/ideabox">ящик</a></li> |
+			
+	    
+      <li><a href="http://godville.net/user/profile">профиль</a></li> |
+      <li><a href="http://godville.net/pantheon">пантеоны</a></li> |
+      <li><a href="http://godville.net/forums">форумы</a></li>
+           |
+	  
+      <li><a href="http://godville.net/blog">блог</a></li>
+	  |
+		
+	  <li><a href="http://wiki.godville.net/">энциклобогия</a></li> |
+		
+      <li style="">  
+          <a href="http://godville.net/help">помощь</a> </li>  |
+
+					<li><a href="http://shop.godville.net/">лавка</a> |</li> 
+
+       
+      <li><a href="http://godville.net/blog/logout" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;">выход</a></li>
+    
+  <li> | <a href="#"><strong>ui</strong></a></li></ul> 
+	</div><div style="display: none;" id="ui_menu_bar"><ul><li><strong>Godville UI:</strong></li><li><a id="reformal" href="http://godville-ui.reformal.ru/" target="about:blank">есть идеи?</a></li><li><a id="update" href="http://github.com/bazuuka/godville-ui/raw/v12/godville-ui.user.js">переустановить</a></li></ul></div><div id="timeout_bar"></div><ul id="stats_log"></ul>
+	<div id="hero_block" style="float: left; width: 100%; margin-bottom: 5em;">
+		<div id="msg_bar" class="top_message_box" style="display: none">
+  <div id="msg_bar_text"></div>
+  <a href="#" onclick="Effect.toggle(&quot;msg_bar&quot;,'blind',{});; return false;">спрятать</a>
+</div>
+
+	<div id="p_status" style="text-align:center;"></div>
+	<div style="text-align:center;display: none;" id="app_bar">
+		
+			<span id="app_status">Подключаемся к сервису быстрых обновлений...</span>
+			<span title="Скрыть"><a href="#" onclick="Effect.toggle(&quot;app_bar&quot;,'blind',{});; return false;">[X]</a></span>		
+		
+	</div>
+
+
+
+<div id="left_block"><div style="position: relative;" class="box_drag" id="hero_info">
+<fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> <a href="#" onclick="Element.show('spinner_h'); new Ajax.Request('/hero/update_hero_info', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_h')}}); return false;">Герой</a>
+  <img alt="Spinner" id="spinner_h" src="hero_files/spinner.gif" style="vertical-align: bottom; display: none;" align="middle" border="0">
+  <a href="#" id="hi_toggle_lnk" onclick="WG.toggle('hi_box', 'hi_toggle_lnk'); return false;">↓</a>
+  </legend>  
+    <div id="hi_box" style="">
+	  <div class="new_line">
+	    <label class="l_capt">Имя</label>
+	    <div class="field_content">
+				<a href="http://godville.net/gods/%D0%A1%D0%B5%D0%BF%D1%83%D0%BB%D1%8C%D0%BA%D0%B0%D1%82%D0%BE%D1%80">Cепулька</a>
+			</div>
+	  </div>
+  
+	  <div class="new_line">
+	    <label class="l_capt">Пол</label>
+	    <div class="field_content">женский</div>
+	  </div>
+	  <div class="new_line">
+	    <label class="l_capt">Возраст</label>
+	    <div class="field_content">26 месяцев</div>
+	  </div>
+	  <div class="new_line">
+	    <label class="l_capt">Девиз</label>
+	    <div class="field_content"><i>Найди сепульку!</i></div>
+	  </div>
+	    <div class="new_line">
+	      <span class="l_capt">Характер</span>
+	      <span class="field_content">агрессивный</span>
+	    </div>
+	  
+	    <div class="new_line">
+	      <label class="l_capt">Гильдия</label>
+	      <div class="field_content"><i>
+ 					<a href="http://wiki.godville.net/index.php/%D0%93%D1%80%D0%B8%D0%B1%D0%BE%D0%B1%D0%BE%D1%80%D1%86%D1%8B" onclick="window.open(this.href);return false;" style="text-decoration: none;">Грибоборцы</a>
+					</i> (кардинал)</div>
+	    </div>	
+	  
+		   
+		
+	</div>
+
+</fieldset>
+</div><div style="position: relative;" class="box_drag" id="hero_stats"><div id="hero_stats_i"><fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> 
+    <a href="#" onclick="Element.show('spinner_hs'); new Ajax.Request('/hero/update_hero_stats', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hs')}}); return false;">Данные героя</a>
+    <img alt="Spinner" id="spinner_hs" src="hero_files/spinner.gif" style="vertical-align: bottom; display: none;" align="middle" border="0">
+	<a href="#" id="hs_toggle_lnk" onclick="WG.toggle('hs_box', 'hs_toggle_lnk'); return false;">↓</a>
+  </legend>
+  <div class="improved" id="hs_box" style="">
+    <div class="new_line">
+      <div>
+      <label class="l_capt">Уровень</label><a class="label-appended" href="#">ещё</a>
+      <div class="field_content">49</div>
+    </div>
+    </div>
+    <div class="new_line">
+      
+    <div id="bar_pr3" class="pr_bg" style="width:100%; background-color:#F9B436;" title="34%">
+        <div id="pr3" class="pr_bar" style="width:66%; margin-bottom: -12px;"></div>
+    </div>
+    </div>
+    <div class="new_line">
+      <label class="l_capt">Инвентарь</label>
+      <div class="field_content">12 / 31</div>
+    </div>
+    <div class="new_line">
+      
+    <div id="bar_pr2" class="pr_bg" style="width:100%; background-color:sienna;" title="38%">
+        <div id="pr2" class="pr_bar" style="width:62%; margin-bottom: -12px;"></div>
+    </div>
+    </div>
+    <div class="new_line">
+      <label class="l_capt">Здоровье</label><a class="label-appended" href="#">ещё</a>
+      <div class="field_content">176 / 292</div>
+    </div>
+    <div class="new_line">
+      
+      
+    <div id="bar_pr1" class="pr_bg" style="width:100%; background-color:yellow;" title="60%">
+        <div id="pr1" class="pr_bar" style="width:40%; margin-bottom: -12px;"></div>
+    </div>
+    </div>
+    <div class="new_line">
+      <label class="l_capt">Задание</label><a class="label-appended" href="#">ещё</a>
+      <div class="field_content">№535</div>
+      <div style="clear:both;"></div>
+      <div class="field_content" style="font-style:italic">дать сеанс одновременной игры в кости на 16 столах</div>
+    </div>
+    <div class="new_line">
+      
+    <div id="bar_pr4" class="pr_bg" style="width:100%; background-color:pink;" title="11%">
+        <div id="pr4" class="pr_bar" style="width:89%; margin-bottom: -12px;"></div>
+    </div>
+    </div>
+
+    <div class="new_line">
+      <label class="l_capt">Золота</label><a class="label-appended" href="#">клад</a>
+      <div class="field_content">всего 797 монет</div>
+    </div>
+
+    <div class="new_line">
+      <span class="l_capt">Убито монстров</span>
+      <span class="field_content">54884</span>
+    </div>
+
+    <div class="new_line">
+      <span class="l_capt">Смертей</span>
+      <span class="field_content">59</span>
+    </div>
+    <div class="new_line" title="Подробнее (отправить на арену можно прямо сейчас при наличии 75% праны)">
+      <span class="l_capt">Побед / Поражений</span>
+      <span class="field_content">
+		
+		    <a href="#" onclick="Element.show('spinner_hs'); new Ajax.Request('/hero/show_fightlog', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hs')}}); return false;">100 / 87</a>
+		
+		</span>
+    </div>
+    <div class="new_line">
+	  
+			
+				<span class="l_capt">Кирпичей для храма</span>
+				<span class="field_content">64.5%</span>
+			
+	  
+    </div>
+	
+	
+      <div class="new_line">
+		  
+	      <span class="l_capt">Столбов от столицы</span><a class="label-appended" href="#">дом</a>
+      
+      <span class="field_content">14 шт</span>
+      </div>
+	
+		
+  </div>
+</fieldset>
+</div><div id="hero_fightlog" style="display: none;"><fieldset>
+	<legend>
+		История сражений
+		<a href="#" onclick="Element.show('spinner_fl'); new Ajax.Request('/hero/hide_fightlog', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_fl')}}); return false;" title="закрыть">[x]</a>			
+	    <img alt="Spinner" id="spinner_fl" src="hero_files/spinner.gif" style="display: none; vertical-align: bottom;" align="middle" border="0">
+		
+	</legend>
+		
+    <div>
+      
+          <div class="new_line">информации о боях нет</div>
+          </div>
+
+</fieldset></div></div><div style="position: relative;" class="box_drag" id="hero_petstats">
+<fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> 
+    Питомец
+		<a href="#" id="hps_toggle_lnk" onclick="WG.toggle('hps_box', 'hps_toggle_lnk'); return false;">↓</a>
+  </legend>
+  <div id="hps_box" style="">
+    <div class="new_line">
+      <label class="l_capt">Имя</label>
+      <div class="field_content">Яго «Невиданный»</div>
+    </div>
+    <div class="new_line">
+      <label class="l_capt">Вид</label>
+      <div class="field_content"><a href="http://wiki.godville.net/index.php/%D0%BE%D0%B3%D0%BD%D0%B5%D0%BB%D0%B8%D1%81" onclick="window.open(this.href);return false;" style="text-decoration: none;">огнелис</a></div>
+    </div>
+    <div class="new_line">
+      <label class="l_capt">Уровень</label>
+      <div class="field_content">25</div>
+    </div>
+    <div class="new_line">
+      <label class="l_capt">Возраст</label>
+      <div class="field_content">5 месяцев</div>
+    </div>
+
+		
+		
+  </div>
+</fieldset>
+
+</div><div style="position: relative;" class="box_drag" id="hero_loot"><fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span>  Инвентарь
+    <img alt="Spinner" id="spinner_loo" src="hero_files/spinner.gif" style="vertical-align: bottom; display: none;" align="middle" border="0">
+    <a href="#" id="inv_toggle_lnk" onclick="WG.toggle('inv_box', 'inv_toggle_lnk'); return false;">↓</a>
+  </legend>
+  <div class="improved" id="inv_box" style="">
+    <div id="inv_capt">
+      
+        <span>
+					В карманах у героя можно найти:
+				</span>
+        <ul>
+          
+            <li style="color: green;">
+              <span style="font-style:italic;">
+                эссенцию здоровья
+              </span>
+              
+              
+            </li>
+          
+            <li>
+              <span style="">
+                аппетитно выглядящий мозг
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                резиновый гвоздь
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                упаковку эвтаназепама
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                артиллерийскую батарейку
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                мешок рациональных зёрен
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                окаменевший мягкий знак
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                полосатый хвост
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="font-weight:bold;">
+                cундук мертвеца
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                дверной глазок
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                плавающую точку
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+            <li>
+              <span style="">
+                статуэтку туманного альбиноса
+              </span>
+              
+              
+            <a href="#">?</a></li>
+          
+        </ul>
+      
+    </div>
+  </div>
+
+</fieldset></div><div class="box_drag" id="hero_invites" style="display: none; position: relative;" ;=""><fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span>  Приглашения
+	<a href="#" id="invite_toggle_lnk" onclick="WG.toggle('invite_box', 'invite_toggle_lnk'); return false;">↓</a>
+  </legend>
+  <div id="invite_box" style="">
+	  <div id="invite_text" title="Если бог с таким именем или e-mail уже зарегистрирован, то мы сразу добавим его в список ваших друзей. Если нет, то мы отправим ему приглашение с текстом из поля «сообщение»">
+	    <span>Хотите пригласить друга? Напишите его e-mail или игровое имя, и ваши герои познакомятся!</span>
+	    <div id="send_invite_form">
+	      <form action="/hero/send_invite" method="post" onsubmit="Element.show('spinner_invt'); new Ajax.Request('/hero/send_invite', {asynchronous:true, evalScripts:true, onComplete:function(request){$('send_invite_form').down('form').reset();}, onSuccess:function(request){Element.hide('spinner_invt')}, parameters:Form.serialize(this)}); return false;">
+	        <div style="padding-top:0.5em;padding-bottom:0.2em;">E-mail или игровое имя друга</div>
+	        <input autocomplete="off" class="rounded_field" id="invite_email" name="invite_email" type="text">
+	        <div style="padding-top: 0.5em;padding-bottom:0.2em;">Сообщение</div>
+	        <textarea class="rounded_field" cols="16" id="message" name="message" rows="5" wrap="virtual;"></textarea>
+	        <div class="invite_sent_blk" style="text-align: center; padding-top: 10px;">
+	          <input class="input_btn" name="commit" value="Отправить" type="submit">
+	        </div>
+	        <center>
+			<img alt="Spinner" id="spinner_invt" src="hero_files/spinner.gif" style="display: none; padding-top: 0.3em;">
+	        <div id="invite_status" class="success"></div>
+	        </center>
+	      </form>
+	    </div>
+	    <div class="new_line">
+	      <label class="l_capt">Приглашений</label>
+	      <div class="field_content">0</div>
+	    </div>
+	  </div>  
+  </div>
+</fieldset></div></div>
+
+<div id="central_block"><div style="position: relative;" class="box_drag" id="hero_lastitems"><fieldset>
+  <legend> <span class="box_handle" title="переместить блок">●</span> 
+      <a href="#" id="update_last" onclick="Element.show('spinner_ml'); new Ajax.Request('/hero/update_last_events', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_ml')}}); return false;">Дневник героя</a>
+
+	<a href="#" onclick="WG.sort_last('up'); return false;" title="последняя запись внизу">▼</a>
+  
+
+
+    <img alt="Spinner" id="spinner_ml" src="hero_files/spinner.gif" style="vertical-align: bottom; display: none;" align="middle" border="0"> 
+  </legend>
+  <div>
+  
+  
+    
+      <div class="new_line">
+		<div class="d_capt">16:42</div>
+        <div class="text_content ">
+ 		  
+				Бронежилец больше не будет обижать маленьких.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:42</div>
+        <div class="text_content ">
+ 		  
+				Услышала на дороге о каких-то пантеонах. Великий, сделай меня главной в пантеоне Жадности, Наглости и Вредности, а?
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:44</div>
+        <div class="text_content ">
+ 		  
+				Призрак Русского Шансона успешно сброшен с обрыва в пропасть.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:46</div>
+        <div class="text_content ">
+ 		  
+				Нащупав в кармане капли датского короля, употребила по назначению и восполнила здоровье. Ну держись, Искусственный Идиот!
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:49</div>
+        <div class="text_content ">
+ 		  
+				Искусственный Идиот убит, заполучила плавающую точку и 40 монет.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:49</div>
+        <div class="text_content ">
+ 		  
+				Забрела в бамбуковую рощу. Полежала, покурила.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:52</div>
+        <div class="text_content ">
+ 		  
+				Вонзилась клыками в горло зверюги и вытянула изрядную порцию жизненной силы.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:52</div>
+        <div class="text_content ">
+ 		  
+				Принц Дисперсии издох, оставив под собой статуэтку туманного альбиноса и 12 золотых.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:56</div>
+        <div class="text_content ">
+ 		  
+				Злобный Шоколадный Голем пал под моим безудержным натиском. Вытрясла
+ из монстрячьего кошелька 25 монет и пошла на поиски нового врага.
+				   
+		  			
+		</div>
+      </div>
+    
+      <div class="new_line">
+		<div class="d_capt">16:56</div>
+        <div class="text_content ">
+ 		  
+				Что-то зелёное и ушастое прошамкало из-под ближайшего куста: «Не пробуй. Делай. Или не делай. Или не пробуй. Запутался я».
+				   
+		  			
+		</div>
+      </div>
+    
+  
+  </div>
+</fieldset></div><div style="position: relative; background-image: none; background-color: transparent;" class="box_drag" id="hero_details"><fieldset class="improved">
+  <legend><span class="box_handle" title="переместить блок">●</span> Вести с полей</legend>
+	
+    <div class="new_line">
+      <span class="l_capt">Противник</span><a class="label-appended" href="#">бей</a>
+      <span class="field_content">Саблекрыс</span>
+    </div>		
+    <div class="new_line">
+      
+    <div id="bar_pr6" class="pr_bg" style="width:100%; background-color:#F9B436;" title="0%">
+        <div id="pr6" class="pr_bar" style="width:100%; margin-bottom: -12px;"></div>
+    </div>
+    </div>	
+  
+  
+    
+      <div class="new_line">Саблекрыс маскируется под ветряную мельницу...</div>
+    	
+  
+  
+</fieldset>
+</div><div style="position: relative;" class="box_drag" id="hero_actsofgod">
+<fieldset>
+  <legend style="white-space:normal;"><span class="box_handle" title="переместить блок">●</span> Пульт вмешательства в личную жизнь
+		  <a href="#" id="aog_toggle_lnk" onclick="WG.toggle('aog_box', 'aog_toggle_lnk'); return false;">↓</a>
+  </legend>  
+    <div class="improved" id="aog_box" style=";margin-top:1.0em;">
+	  <div class="new_line">
+	    <label class="l_capt">Прана</label><a class="label-appended" href="#">ещё</a><a class="label-appended" href="#">жертва</a>
+	    <div class="field_content">34%</div>
+	  </div>
+	  <div style="padding-top:1.2em; padding-bottom:1.2em;">
+	    
+    <div id="bar_pr5" class="pr_bg" style="width:100%; background-color:#199BDC;" title="34%">
+        <div id="pr5" class="pr_bar" style="width:66%; margin-bottom: -12px;"></div>
+    </div>
+	  </div>
+	  <div class="new_line" style="color:#777777;font-weight:bold;">
+	    
+	      
+	        <span id="encourage_link">
+	          <a href="#" onclick="Element.show('spinner_god_acts');; new Ajax.Request('/hero/encourage', {asynchronous:true, evalScripts:true}); return false;">Сделать хорошо</a>
+	        </span> 
+	        <span style="display:inline-block;width:40px;" id="god_cmd_progress">
+	          <img alt="Spinner" id="spinner_god_acts" src="hero_files/spinner.gif" style="display: none; padding-left: 1em; padding-right: 1em;" align="middle" border="0">        
+	        </span>
+	        <span id="punish_link">
+	          <a href="#" onclick="Element.show('spinner_god_acts'); new Ajax.Request('/hero/punish', {asynchronous:true, evalScripts:true}); return false;">Сделать плохо</a>
+	        </span>  
+					
+				  
+			  
+	    
+			
+	  </div>
+		
+			<div id="god_phrase_form" style="margin-top:1em;text-align:center;">
+		    <form action="/hero/god_phrase" method="post" onsubmit="if( !AOG.check_form() ) return false; new Ajax.Request('/hero/god_phrase', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;">
+				<div><span class="aog_capt">
+					<div style="position:relative;overflow:hidden;">
+					<input autocomplete="off" class="rounded_field" id="god_phrase" name="god_phrase" onblur="AOG.ShowLabel('aog_hint_label', 'god_phrase');" onfocus="AOG.HideLabel('aog_hint_label', 'god_phrase');" onkeyup="AOG.check_god_phrase_lenght();" type="text">
+						<label id="aog_hint_label" style="position: absolute; left: 15px; top: 0.6em; display: none;" onclick="AOG.HideLabel('aog_hint_label', 'god_phrase');">
+								введите глас божий
+						</label>
+					</div>
+					</span>
+					<div style="padding-top:0.5em;">
+						<input class="input_btn" id="god_phrase_btn" name="commit" value="Изречь" type="submit">
+					</div>
+				</div>
+			  </form>
+				<div><span class="error" style="display:none;" id="s_god_phrase">(слишком длинная строка, макс. 80 символов)</span></div>
+      </div>
+		
+
+	  <div class="new_line" style="font-style:italic;">
+	    <div id="cmd_response"></div>
+	  </div>
+	</div>
+</fieldset>
+</div><div style="position: relative;" class="box_drag" id="hero_poweracc">
+<fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> Прано-аккумулятор
+		  <a href="#" id="acc_toggle_lnk" onclick="WG.toggle('acc_box', 'acc_toggle_lnk'); return false;">↓</a>
+  </legend>  
+    <div id="acc_box" style="">
+	  <div class="new_line" style="margin-top:1em;width:95%;">
+		
+	<div class="field_content" style="margin-top:0.2em;margin-left:0.5em;" title="Зарядов в аккумуляторе: 0.0">
+	    <span style="font-size:100%;color:#193ADC;font-family:Helvetica;">
+				
+							<div class="acc_bg" style="width:57px; background-color:#199BDC;">
+			        <div class="acc_bar" style="width:57px; margin-bottom: -12px;"></div>
+			    </div>
+							<div class="acc_bg" style="width:57px; background-color:#199BDC;">
+			        <div class="acc_bar" style="width:57px; margin-bottom: -12px;"></div>
+			    </div>
+							<div class="acc_bg" style="width:57px; background-color:#199BDC;">
+			        <div class="acc_bar" style="width:57px; margin-bottom: -12px;"></div>
+			    </div>
+							<div class="acc_bg" style="width:57px; background-color:#199BDC;">
+			        <div class="acc_bar" style="width:57px; margin-bottom: -12px;"></div>
+			    </div>
+							<div class="acc_bg" style="width:57px; background-color:#199BDC;">
+			        <div class="acc_bar" style="width:57px; margin-bottom: -12px;"></div>
+			    </div>
+							<div class="acc_bg" style="width:57px; background-color:#199BDC;">
+			        <div class="acc_bar" style="width:57px; margin-bottom: -12px;"></div>
+			    </div>
+			
+	    </span>	
+	</div>
+
+
+	  </div>
+	  <div class="new_line" style="color:#777777;font-weight:bold;">
+			
+	    
+		
+	  </div>
+		
+	  <div class="new_line" style="font-size:90%;">
+				<div style="padding-bottom:0.5em;text-align:center;">
+					Всего зарядов: 0 
+						<br>Каждый заряд прано-аккумулятора позволяет в любой момент восстановить 50% праны. <span style="font-weight:bold;"><br>
+						<a href="http://godville.net/user/profile/plogs">Как его зарядить?</a>
+						</span><br>  
+				</div>
+		</div>
+	  <div class="new_line" style="color:#777777;font-weight:bold;">
+	    <div id="acc_cmd_progress">
+	      <img alt="Spinner" id="spinner_god_acc" src="hero_files/spinner.gif" style="display: none; padding-left: 1em; padding-right: 1em;" align="middle" border="0">        
+	    </div>
+	  </div>
+
+	  <div class="new_line" style="font-style:italic;">
+	    <div id="acc_cmd_response"></div>
+	  </div>
+	</div>
+</fieldset>
+</div><div style="position: relative;" class="box_drag" id="hero_privatefeedback"><fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> Нижний ящик
+    <a href="#" id="feedback_toggle_lnk" onclick="WG.toggle('feedback_box', 'feedback_toggle_lnk'); return false;">↓</a>
+  </legend>
+  <div id="feedback_box" style="">
+    <div id="send_feedback_form">
+      <form action="/hero/send_feedback" method="post" onsubmit="if( !Feedback.check_form() ) return false; new Ajax.Request('/hero/send_feedback', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_fdbk')}, onSuccess:function(request){Feedback.reset_form();}, parameters:Form.serialize(this)}); return false;">
+        <div id="feedback_text">Есть чем <a href="http://godville.net/forums/show_topic/89">поделиться</a>? Прямой канал отправки идей разработчикам к вашим услугам!
+          <div style="padding-bottom:2em;padding-top:1em;">
+            <div class="feedback_capt">Хочу предложить
+							<select id="feedback_id" name="feedback[id]" onchange="Feedback.update_form()" onkeypress="Feedback.update_form()"><option selected="selected" value="">другое</option>
+<option value="8">задание (квест)</option>
+<option value="7">исправить ошибку</option>
+<option value="11">весть с полей</option>
+<option value="1">монстра</option>
+<option value="5">фразу в дневник</option>
+<option value="9">хронику для дуэли</option>
+<option value="3">снаряжение</option>
+<option value="2">трофей</option>
+<option value="10">решить проблему с оплатой</option>
+<option value="12">текст для газеты</option>
+<option value="15">удалить неудачные тексты</option>
+<option value="6">отличную идею</option></select>
+            </div>
+          </div>
+        </div>
+
+        <div id="feedback_monster" style="display:none;">
+          <div class="feedback_capt">* Название монстра (мужского рода, в именительном падеже и с прописной буквы):
+            <span class="error" style="display:none;" id="s_monster_name">(макс. 25 символов)</span></div>
+          <div class="feedback_capt"><input class="rounded_field" id="monster_name" name="monster_name" type="text"></div>
+
+          <div class="feedback_capt"> Выпадающий трофей (в винительном падеже со строчной буквы, необязательно):
+            <span class="error" style="display:none;" id="s_monster_artifact">(макс. 40 символов)</span></div>
+          <div class="feedback_capt"><input class="rounded_field" id="monster_artifact" name="monster_artifact" type="text"></div>
+
+          <div class="feedback_capt"> Предсмертный крик (совсем необязательно):
+            <span class="error" style="display:none;" id="s_monster_rattle">(макс. 20 символов)</span>
+          </div>
+          <div class="feedback_capt"><input class="rounded_field" id="monster_rattle" name="monster_rattle" type="text"></div>
+
+					<div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+					<div class="feedback_capt"><input class="rounded_field" id="monster_reference" name="monster_reference" type="text"></div>
+
+				
+          <div class="feedback_capt" style="font-style:italic;font-size:0.9em;">Пожалуйста, ознакомьтесь с
+            <a href="http://godville.net/forums/show_topic/4">рекомендациями</a>
+            по придумыванию монстров. На текущий момент отбор проходит только 2% предложенного.</div>
+				
+        </div>
+
+        <div id="feedback_quest" style="display:none;">
+          <div class="feedback_capt"> * Текст задания (по аналогии с текущим заданием героя):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="quest_name" name="quest_name" type="text"></div>
+
+          <div class="feedback_capt"> * Фраза завершения квеста (от лица героя, в дневник):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="quest_success" name="quest_success" type="text"></div>
+
+          <div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="quest_reference" name="quest_reference" type="text"></div>
+
+        </div>
+
+        <div id="feedback_equipment" style="display:none;">
+          <div class="feedback_capt">Тип снаряжения:</div>
+          <div class="feedback_capt"><select id="equipment_id" name="equipment[id]"><option selected="selected" value="">Оружие</option>
+<option value="1">Щит</option>
+<option value="2">Голова</option>
+<option value="6">Талисман</option>
+<option value="5">Ноги</option>
+<option value="4">Руки</option>
+<option value="3">Тело</option></select></div>
+
+          <div class="feedback_capt"> Название:
+            <span class="error" style="display:none;" id="s_equipment_name">(макс. 30 символов)</span></div>
+          <div class="feedback_capt"><input class="rounded_field" id="equipment_name" name="equipment_name" type="text"></div>
+
+          <div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="equip_reference" name="equip_reference" type="text"></div>
+
+        </div>
+
+        <div id="feedback_skill" style="display:none;">
+          <div class="feedback_capt">Тип умения:</div>
+          <div class="feedback_capt"><select id="skill_id" name="skill[id]"><option selected="selected" value="">боевое</option>
+<option value="1">трансп.</option>
+<option value="2">торговое</option></select>
+					</div>
+
+          <div class="feedback_capt">  Название:
+            <span class="error" style="display:none;" id="s_skill_name">(макс. 30 символов)</span></div>
+          <div class="feedback_capt"><input class="rounded_field" id="skill_name" name="skill_name" type="text"></div>
+
+					<div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="skill_reference" name="skill_reference" type="text"></div>
+
+        </div>
+
+        <div id="feedback_artifact" style="display:none;">
+          <div class="feedback_capt"> Название (в винительном падеже со строчной буквы):
+            <span class="error" style="display:none;" id="s_artifact_name">(макс. 40 символов)</span></div>
+          <div class="feedback_capt"><input class="rounded_field" id="artifact_name" name="artifact_name" type="text"></div>
+				 	
+	          <div class="feedback_capt" style="font-style:italic;font-size:0.9em;">Пожалуйста, ознакомьтесь с
+	            <a href="http://godville.net/forums/show_topic/4">рекомендациями</a>
+	            по придумыванию трофеев.
+						</div>
+					
+					<div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="artifact_reference" name="artifact_reference" type="text"></div>          
+        </div>
+
+        <div id="feedback_sms" style="display:none;">
+          <span class="error" style="display:none;text-align:center;" id="s_sms_message">(макс. 2000 символов)</span>
+          <textarea class="rounded_field" id="sms_message" name="sms_message" rows="4" wrap="virtual;"></textarea>
+          <br>
+				
+          <div class="feedback_capt" style="font-style:italic;font-size:0.9em;">
+            Если с оплатой произошли какие-либо проблемы, <b>в первую очередь необходимо обратиться в службы поддержки платежных систем</b> (<a href="http://www.onlinedengi.ru/support.php">сюда</a> для ДеньгиОнлайн, <a href="http://chat.2pay.ru/">сюда</a>
+ для 2Pay) - обычно данные о платеже задерживаются там и до нас доходят 
+не сразу. Если вы отправили SMS, то бывает полезно уточнить ее статус в 
+техподдержке вашего сотового оператора. Если же все варианты исчерпаны, 
+то напишите нам, указав максимум деталей (точное дату и время, номера 
+транзакций, суммы и т.п.).
+          </div>
+				
+        </div>
+
+        <div id="feedback_idea" style="display:none;">
+          <span class="error" style="display:none;text-align:center;" id="s_idea_message">(макс. 2000 символов)</span>
+          <textarea class="rounded_field" id="idea_message" name="idea_message" rows="4" wrap="virtual;"></textarea>
+          <br>
+					
+                  <div class="feedback_capt" style="font-style:italic;font-size:0.9em;">
+            Для более успешной генерации идей обязательно почитайте <a href="http://wiki.godville.net/index.php/%D0%9F%D0%B0%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D0%B5_%D0%B1%D1%8E%D1%80%D0%BE">патентное бюро</a>.
+            Еще можно обсудить идею <a href="http://godville.net/forums/show/2">на форуме</a>. Идеи вроде "хочу графику" или "пускай женятся" можно не присылать.
+                  </div>
+					
+        </div>
+
+        <div id="feedback_bug" style="display:none;">
+          <span class="error" style="display:none;text-align:center;" id="s_bug_message">(макс. 2000 символов)</span>
+          <textarea class="rounded_field" id="bug_message" name="bug_message" rows="4" wrap="virtual;"></textarea>
+          <br>
+                  <div class="feedback_capt" style="font-style:italic;font-size:0.9em;">
+						Чем подробнее и детальнее вы опишете ошибку, тем быстрее мы сможем ее найти и исправить. <b>Не нужно</b> присылать ошибки в гласах чужих богов (подробнее - в <a href="http://godville.net/forums/show_topic/41">FAQ</a>). И стоит убедиться, что эта ошибка не <a href="http://godville.net/forums/show_topic/7">обсуждается</a> прямо сейчас.
+                  </div>
+        </div>
+
+        <div id="feedback_content" style="display:none;">
+          <div class="feedback_capt"> Текст из игры (фраза, монстр, трофей, умение...), который выглядит сомнительно и его хочется изменить/удалить:</div>
+          <div class="feedback_capt"><input class="rounded_field" id="content_title" name="content_title" type="text"></div>
+          <span class="error" style="display:none;text-align:center;" id="s_content_title">(мин. 5 символов, макс. 700 символов)</span>
+
+          <div class="feedback_capt">Пояснение для голосующих (почему данный текст плох и как можно сделать его лучше):</div>
+          <div style="text-align:center;"><textarea class="rounded_field" id="content_reason" name="content_reason" rows="4" wrap="virtual;"></textarea>
+            <span class="error" style="display:none;" id="s_content_reason">(мин. 5 символов, макс. 500 символов)</span>
+                  <div class="feedback_capt" style="font-style:italic;font-size:0.9em;">
+	            Если вы не сомневаетесь в правильности вашей правки, то 
+пишите не сюда, а в раздел «исправить ошибку». При отправке трофея нужно
+ учитывать, из какого монстра он выпал. Очень желательно предварительно 
+погуглить сомнительное и взглянуть <a href="http://godville.net/forums/show_topic/1032">сюда</a> и на последние сообщения <a href="http://godville.net/forums/show_topic/894">обсуждения</a>.
+	          </div>
+          </div>
+        </div>
+
+        <div id="feedback_diary" style="display:none;">
+          <span class="error" style="display:none;text-align:center;" id="s_diary_message">(макс. 2000 символов)</span>
+          <div style="text-align:center;"><textarea class="rounded_field" id="diary_message" name="diary_message" rows="4" wrap="virtual;"></textarea></div>
+          <br>    
+					<div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="diary_reference" name="diary_reference" type="text"></div>
+        </div>
+
+        <div id="feedback_arena" style="display:none;">
+          <span class="error" style="display:none;text-align:center;" id="s_arena_message">(макс. 2000 символов)</span>
+          <div style="text-align:center;"><textarea class="rounded_field" id="arena_message" name="arena_message" rows="4" wrap="virtual;"></textarea></div>
+          <br>    
+					<div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="arena_reference" name="arena_reference" type="text"></div>
+        </div>
+
+        <div id="feedback_common" style="">
+          <span class="error" style="display:none;text-align:center;" id="s_common_message">(макс. 2000 символов)</span>
+          <textarea class="rounded_field" id="common_message" name="common_message" rows="4" wrap="virtual;"></textarea>
+          <br>    
+        </div>
+
+        <div id="feedback_details" style="display:none;">
+          <div class="feedback_capt"> Текст вести (в третьем лице, обычно заканчивается многоточием):</div>
+          <div class="feedback_capt"><input class="rounded_field" id="details_text" name="details_text" type="text"></div>
+					<div class="feedback_capt"> Пояснение <a href="http://godville.net/forums/show_topic/1237">отсылки</a> (если ваш текст что-то пародирует):</div>
+					<div class="feedback_capt"><input class="rounded_field" id="details_reference" name="details_reference" type="text"></div>
+          <span class="error" style="display:none;" id="s_details_text">(макс. 100 символов)</span>
+        </div>
+
+        <div class="msg_sent_blk" style="clear:both;">
+          <input class="input_btn" name="commit" value="Отправить в ящик" type="submit">
+          <div style="text-align:center;">
+            <img alt="Spinner" id="spinner_fdbk" src="hero_files/spinner.gif" style="display: none;">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="fdbk_status" class="success"></div>
+    <div id="feedback_list" style="width:100%">
+      
+	Ваши последние идеи, отмеченные разработчиками:
+    
+      <a href="#" onclick="new Ajax.Request('/hero/display_feedback', {asynchronous:true, evalScripts:true}); return false;">(показать все)</a>
+		
+    <ul>
+      
+        <li>
+					
+          	число ячеек в аккумуляторе иногда отобра...
+					
+        </li>
+        
+        <li>
+					
+						" Ангел-предохранитель злорадно хохочет,...
+					
+        </li>
+        
+        <li>
+					
+          	на мой взгляд в блоке "Знакомые героя"  ...
+					
+        </li>
+        
+    </ul>
+
+
+    </div>
+
+  </div>
+
+</fieldset>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('monster_name', function(element, value) {Feedback.check_feedback_field('monster_name', 25);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('monster_artifact', function(element, value) {Feedback.check_feedback_field('monster_artifact', 40);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('monster_rattle', function(element, value) {Feedback.check_feedback_field('monster_rattle', 20);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('artifact_name', function(element, value) {Feedback.check_feedback_field('artifact_name', 40);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('equipment_name', function(element, value) {Feedback.check_feedback_field('equipment_name', 30);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('skill_name', function(element, value) {Feedback.check_feedback_field('skill_name', 30);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('common_message', function(element, value) {Feedback.check_feedback_field('common_message', 2000);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('diary_message', function(element, value) {Feedback.check_feedback_field('diary_message', 2000);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('arena_message', function(element, value) {Feedback.check_feedback_field('arena_message', 2000);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('idea_message', function(element, value) {Feedback.check_feedback_field('idea_message', 2000);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('bug_message', function(element, value) {Feedback.check_feedback_field('bug_message', 2000);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('details_text', function(element, value) {Feedback.check_feedback_field('details_text', 100);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('content_title', function(element, value) {Feedback.check_feedback_field('content_title', 700);})
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.EventObserver('content_reason', function(element, value) {Feedback.check_feedback_field('content_reason', 1500);})
+//]]>
+</script>
+</div></div>
+
+<div id="right_block"><div style="position: relative;" class="box_drag" id="hero_pantheon"><fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> 
+    <a href="#" onclick="Element.show('spinner_pan'); new Ajax.Request('/hero/update_hero_pantheon', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_pan')}}); return false;">Места в пантеонах</a>
+    <img alt="Spinner" id="spinner_pan" src="hero_files/spinner.gif" style="vertical-align: bottom; display: none;" align="middle" border="0">
+	  <a href="#" id="pantheon_toggle_lnk" onclick="WG.toggle('pantheon_box', 'pantheon_toggle_lnk'); return false;">↓</a>
+  </legend>
+  <div id="pantheon_box" style="">
+  
+    <div>
+			<div class="new_line"><div><label class="l_capt"> Благодарности</label> <div class="field_content"><a href="http://godville.net/pantheon/4?page=5">484</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Солидарности</label> <div class="field_content"><a href="http://godville.net/pantheon/5?page=1">10</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Сказаний</label> <div class="field_content"><a href="http://godville.net/pantheon/9?page=1">−</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Поддержки</label> <div class="field_content"><a href="http://godville.net/pantheon/6">−</a></div> </div></div>
+	  <div class="panth_div"></div>
+			<div class="new_line"><div><label class="l_capt"> Мощи</label> <div class="field_content"><a href="http://godville.net/pantheon/1?page=44">4325</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Мастерства</label> <div class="field_content"><a href="http://godville.net/pantheon/13?page=33">3209</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Жадности</label> <div class="field_content"><a href="http://godville.net/pantheon/2?page=1">−</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Живучести</label> <div class="field_content"><a href="http://godville.net/pantheon/3?page=1">−</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Строительства</label> <div class="field_content"><a href="http://godville.net/pantheon/10?page=31">3078</a></div> </div></div>
+			<div class="new_line"><div><label class="l_capt"> Звероводства</label> <div class="field_content"><a href="http://godville.net/pantheon/12?page=3">243</a></div> </div></div>
+						
+		  	<div class="panth_div"></div>
+				<div class="new_line"><div><label class="l_capt"> Гладиаторства</label> <div class="field_content"><a href="http://godville.net/pantheon/11?page=22">2167</a></div> </div></div>
+				<div class="new_line"><div><label class="l_capt"> Величия</label> <div class="field_content"><a href="http://godville.net/pantheon/14?page=1">−</a></div> </div></div>
+				<div class="new_line"><div><label class="l_capt"> Созидания</label> <div class="field_content"><a href="http://godville.net/pantheon/7?page=1">−</a></div> </div></div>
+				<div class="new_line"><div><label class="l_capt"> Разрушения</label> <div class="field_content"><a href="http://godville.net/pantheon/8?page=16">1515</a></div> </div></div>
+			
+    </div>
+  
+  </div>
+</fieldset>
+</div><div style="position: relative;" class="box_drag" id="hero_equip"><fieldset>
+<legend><span class="box_handle" title="переместить блок">●</span> Снаряжение
+	<a href="#" id="equipment_toggle_lnk" onclick="WG.toggle('equipment_box', 'equipment_toggle_lnk'); return false;">↓</a>
+</legend>
+  <div class="improved" id="equipment_box" style="">
+	  
+		
+			<div class="new_line">
+				<label class="l_capt">Оружие</label>
+				<div class="equip_content">кнут искателя приключений <span class="no_br">+46</span></div>
+				</div>		
+		
+			<div class="new_line">
+				<label class="l_capt">Щит</label>
+				<div class="equip_content">люк скайуокера <span class="no_br">+51</span></div>
+				</div>		
+		
+			<div class="new_line">
+				<label class="l_capt">Голова</label>
+				<div class="equip_content">инфракрасная шапочка <span class="no_br">+47</span></div>
+				</div>		
+		
+			<div class="new_line">
+				<label class="l_capt">Тело</label>
+				<div class="equip_content">ангельские крылья <span class="no_br">+46</span></div>
+				</div>		
+		
+			<div class="new_line">
+				<label class="l_capt">Руки</label>
+				<div class="equip_content">перчатки грандмастера <span class="no_br">+47</span></div>
+				</div>		
+		
+			<div class="new_line">
+				<label class="l_capt">Ноги</label>
+				<div class="equip_content">гидравлические валенки <span class="no_br">+47</span></div>
+				</div>		
+		
+			<div class="new_line">
+				<label class="l_capt">Талисман</label>
+				<div class="equip_content">протеиновая цепочка <span class="no_br">+51</span></div>
+				</div>		
+		
+	  
+   </div>
+</fieldset>
+</div><div style="position: relative;" class="box_drag" id="hero_skills">
+
+  <fieldset>
+    <legend><span class="box_handle" title="переместить блок">●</span> Умения
+		<a href="#" id="skills_toggle_lnk" onclick="WG.toggle('skills_box', 'skills_toggle_lnk'); return false;">↓</a>
+	</legend>
+	  <div id="skills_box" style="">
+	    
+	      <ul style="margin-top:1em;">
+	        
+	          <li class="skill_t">ладонь панды</li><div class="skill_d" style="list-style-type: none;">боевое 27 ур.</div>
+	        
+	          <li class="skill_t">ксиводемонстрация</li><div class="skill_d" style="list-style-type: none;">боевое 25 ур.</div>
+	        
+	          <li class="skill_t">зажим пупка</li><div class="skill_d" style="list-style-type: none;">боевое 21 ур.</div>
+	        
+	          <li class="skill_t">травля баек</li><div class="skill_d" style="list-style-type: none;">боевое 17 ур.</div>
+	        
+	          <li class="skill_t">еврейская жилка</li><div class="skill_d" style="list-style-type: none;">торговое 16 ур.</div>
+	        
+	          <li class="skill_t">солнечный удар</li><div class="skill_d" style="list-style-type: none;">боевое 15 ур.</div>
+	        
+	          <li class="skill_t">матогенерация</li><div class="skill_d" style="list-style-type: none;">боевое 14 ур.</div>
+	        
+	          <li class="skill_t">насильственная щедрость</li><div class="skill_d" style="list-style-type: none;">торговое 13 ур.</div>
+	        
+	          <li class="skill_t">уход в точку</li><div class="skill_d" style="list-style-type: none;">трансп. 9 ур.</div>
+	        
+	          <li class="skill_t">фигурное шатание</li><div class="skill_d" style="list-style-type: none;">трансп. 9 ур.</div>
+	        
+	      </ul>
+	    
+    </div>
+  </fieldset>
+
+</div><div class="box_drag" id="hero_friendinfo" style="display: none; position: relative;" ;=""><fieldset>
+  <legend><span class="box_handle" title="переместить блок">●</span> Данные бога
+	<a href="#" onclick="Element.show('spinner_fi'); new Ajax.Request('/hero/hide_friend_details', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_fi')}}); return false;" title="закрыть">[x]</a>	
+    <img alt="Spinner" id="spinner_fi" src="hero_files/spinner.gif" style="display: none; vertical-align: bottom;" align="middle" border="0">
+  </legend>
+  
+  <div class="new_line">
+    <label class="l_capt">Имя бога</label>
+    <div class="field_content"><b>
+				
+   		<a href="http://godville.net/gods/%D0%A1%D0%B5%D0%BF%D1%83%D0%BB%D1%8C%D0%BA%D0%B0%D1%82%D0%BE%D1%80" title="к личной странице">Сепулькатор</a>
+	</b></div>
+
+  </div>
+  <div class="new_line">
+    <label class="l_capt">Имя героя</label>
+    <div class="field_content">Cепулька</div>
+  </div>
+  <div class="new_line">
+    <label class="l_capt">Пол героя</label>
+    <div class="field_content">женский</div>
+  </div>
+  <div class="new_line">
+    <label class="l_capt">Возраст</label>
+    <div class="field_content">26 месяцев</div>
+  </div>
+  <div class="new_line">
+    <label class="l_capt">Уровень</label>
+    <div class="field_content">49</div>
+  </div>
+  <div class="new_line">
+    <label class="l_capt">Девиз</label>
+    <div class="field_content"><i>Найди сепульку!</i></div>
+  </div>
+  <div class="new_line">
+    <a href="#" onclick="Effect.toggle(&quot;send_message_form&quot;,'blind',{});; return false;">Написать послание</a>
+  </div>
+  <div id="send_message_form" style="display: none">
+    <form action="/hero/send_message" method="post" onsubmit="Element.show('spinner_msg'); new Ajax.Request('/hero/send_message', {asynchronous:true, evalScripts:true, onComplete:function(request){$('send_message_form').down('form').reset();}, onSuccess:function(request){Element.hide('spinner_msg')}, parameters:Form.serialize(this)}); return false;">
+      <textarea cols="16" id="message" name="message" rows="5" wrap="virtual;"></textarea>
+      <div class="msg_sent_blk">
+        <input class="input_btn" name="commit" value="Отправить сообщение" type="submit">
+          
+      </div>
+      <img alt="Spinner" id="spinner_msg" src="hero_files/spinner.gif" style="display: none;">
+      <div id="msg_status"></div>
+    </form>
+  </div>
+  <div class="new_line">
+    <center>
+	  <div><a href="#" onclick="if (confirm('Знакомый может пригодиться герою в дальнейшем. Вы точно хотите удалить знакомого из списка друзей?')) { Element.show('spinner_fi'); new Ajax.Request('/hero/delete_friend', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_fi')}}); }; return false;">Удалить из знакомых</a>
+	  </div>
+    </center>
+  </div>
+  
+</fieldset></div><div style="position: relative;" class="box_drag" id="hero_friendmessages"><fieldset>
+  
+    <legend><span class="box_handle" title="переместить блок">●</span> 
+		<a href="#" id="msg_caption" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/update_messages', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;" title="обновить">Переписка</a>				
+		
+		<img alt="Spinner" id="spinner_hf" src="hero_files/spinner.gif" style="vertical-align: bottom; display: none;" align="middle" border="0">
+		<a href="#" id="messages_toggle_lnk" onclick="WG.toggle('messages_box', 'messages_toggle_lnk'); return false;">↓</a>
+    </legend>
+	<div id="messages_box" style="">
+
+		<div class="improved" id="recent_friends">
+			
+  <div class="new_line" style="text-align:center;">
+    
+	    <a href="http://godville.net/gods/Bihaz" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Bihaz', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Bihaz</a>,
+    
+	    <a href="http://godville.net/gods/Fortunattto" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Fortunattto', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Fortunattto</a>,
+    
+	    <a href="http://godville.net/gods/Funny%20Undead" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Funny%20Undead', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Funny Undead</a>,
+    
+	    <a href="http://godville.net/gods/Jiws" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Jiws', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Jiws</a>,
+    
+	    <a href="http://godville.net/gods/LuaLua" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/LuaLua', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">LuaLua</a>,
+    
+	    <a href="http://godville.net/gods/Oyashiro-sama" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Oyashiro-sama', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Oyashiro-sama</a>,
+    
+	    <a href="http://godville.net/gods/Papa%20Kaa" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Papa%20Kaa', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Papa Kaa</a>,
+    
+	    <a href="http://godville.net/gods/Qazix" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend/Qazix', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">Qazix</a>
+    
+		<div style="text-align:center;font-weight:bold;" id="friend_links">
+			
+	
+		<a href="#" onclick="Element.show('spinner_hf'); new Ajax.Request('/hero/show_friend_list', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('spinner_hf')}}); return false;">показать всех знакомых</a>
+	
+
+
+	
+
+		</div>
+  </div>	
+
+
+		</div>
+		<div id="friend_info">
+			
+
+		</div>
+		<div id="message_list">
+			
+
+  <div class="new_line">Переписка отсутствует.</div>
+
+<div class="new_line">
+  <center>
+    
+      
+    
+  </center>
+</div>
+
+
+
+		</div>
+	</div>
+</fieldset></div></div>
+<div style="clear:both;text-align:center;font-size:80%;"> 
+	<a href="#" onclick="WG.reset_layout(); return false;">(вернуть стандартное расположение блоков)</a>
+</div>
+
+	</div>	
+</div>
+
+		
+        <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script><script src="hero_files/ga.js" type="text/javascript"></script>
+      <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-1675968-2");
+      pageTracker._trackPageview();
+      } catch(err) {}</script>
+
+
+<div style="position: absolute; width: 6px; height: 6px; top: -9999px; left: -9999px;" class="movieContainer " id="sm2-container"><embed allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" bgcolor="#ffffff" allowscriptaccess="always" quality="high" src="hero_files/soundmanager2.swf" id="sm2movie" name="sm2movie" height="100%" width="100%"></div><iframe src="hero_files/xsdClose.htm" style="display: block; width: 0pt; height: 0pt; border: 0pt none; margin: 0pt; padding: 0pt; overflow: hidden; visibility: hidden;"></iframe><iframe src="hero_files/xsdrBridge.htm" style="display: block; width: 0pt; height: 0pt; border: 0pt none; margin: 0pt; padding: 0pt; overflow: hidden; visibility: hidden;"></iframe><iframe src="hero_files/xsdrBridge_002.htm" style="display: block; width: 0pt; height: 0pt; border: 0pt none; margin: 0pt; padding: 0pt; overflow: hidden; visibility: hidden;"></iframe></body></html>

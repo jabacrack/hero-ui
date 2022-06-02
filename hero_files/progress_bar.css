@@ -1,0 +1,38 @@
+/*
+img.percentImage {
+    background: transparent url( ../images/progress_back3_400.png ) no-repeat top right;
+    margin: 5px 0pt 0pt;
+    padding: 0pt;
+    background-position: 1px 0;
+}*/
+
+.pr_bar {
+    background-color: #EEEEEE;
+    height: 6px;
+    float: right;
+}
+
+.pr_bg {
+    /*background-color: #F9B436;*/
+    float: right;
+    height: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #626562;
+}
+
+.acc_bar {
+    background-color: #EEEEEE;
+    height: 12px;
+    float: none;	
+}
+
+.acc_bg {
+	margin-left:5px;
+	margin-bottom:3px;
+    float: left;
+    height: 12px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #626562;
+}

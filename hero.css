@@ -1,0 +1,106 @@
+.box, .box_drag {
+    /*padding: 0.5em 0.5em 0.5em 0.5em;*/
+    /*margin: 0.5em 0.5em 0.5em 0.5em;*/
+
+    background:#F6F6F9 none repeat scroll 0;
+    border:1px solid #CCCCCC;
+    border-top: none;
+    /*padding: 0 16px 16px;*/
+    margin: 13px 0 0;
+    /*margin:0 0 1.0em;*/
+    /*padding:0.5em;*/
+    /*margin-top:0.5em;*/
+}
+
+.box > .header {
+    /*padding:0.2em 1em 0.3em;*/
+    /*font-size: 20px;*/
+    margin: 0 -1px;
+    /*overflow: hidden;*/
+    display: flex;
+    transform: translate(0, -13px);
+}
+
+.box > .header > span {
+    /*float: left;*/
+    padding: 0 8px;
+    line-height: 24px;
+    background:#FFFFFF none repeat scroll 0;
+    border:1px solid #CCCCCC;
+    color:#199BDC;
+    font-size:1.0em;
+    font-weight:700;
+    /*display: inline-block;*/
+}
+
+.header::before,
+.header::after {
+background: green;
+    /*height: 8px;*/
+    /*transform: translate(0, -13px);*/
+}
+
+.header::before {
+    content: '';
+    box-sizing: initial;
+    border-top: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    position: relative;
+    /*display: block;*/
+    top: 13px;
+    /*float: left;*/
+    /*margin: 10px 0 0;*/
+    min-width: 8px;
+    /*width: 18px;*/
+    z-index: 99999;
+    /*background: green;*/
+}
+
+.header::after {
+    content: '';
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    position: relative;
+    /*display: inline-block;*/
+    /*left: 0;*/
+    top: 13px;
+    /*overflow: hidden;*/
+    /*width: 100%;*/
+    flex-grow: 1;
+}
+
+.box > .header a {
+    color:#199BDC;
+    text-decoration: none;
+}
+
+.box dl, .box_drag dl {
+    background:#F6F6F9 none repeat scroll 0;
+    /*border:1px solid #CCCCCC;*/
+    margin:0 0 1.0em;
+    padding:0.5em;
+    margin-top:0.5em;
+    /*position: relative;*/
+    /*clear: both;*/
+    /*display: flex;*/
+}
+/*.box, .box_drag .row {*/
+/*    text-align: center;*/
+/*    clear: both;*/
+/*    padding: 5px;*/
+/*    width:95%;*/
+/*}*/
+
+.box dt, .box_drag dt {
+    flex-grow: 1;
+    text-align: left;
+    font-weight:bold;
+    float: left;
+    /*display: block;*/
+}
+.box dd, .box_drag dd{
+    text-align: right;
+
+    /*display: block;*/
+}
+

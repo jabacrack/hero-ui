@@ -1,0 +1,38 @@
+
+.t_award_small {
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -khtml-border-radius: 12px; 
+	border-radius: 12px;
+
+	background-color: #FFFED0;
+	border: 1px solid #DF9900;
+	line-height: 1.5;
+	margin: 3px 3px 3px 3px;
+	padding: 2px 5px 2px 5px;
+	color:#AF5900;
+	font-size: 12px;
+	font-weight: bold;
+	display: inline-block; 
+	width: auto;
+	font-family:'Lucida Grande',Tahoma,Arial,Helvetica,sans-serif
+}
+
+.cmplt_status {
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px; 
+	border-radius: 6px;
+
+	background-color: #FFFED0;
+	border: 1px solid #BBBBBB;
+	color: #444444;
+	line-height: 1.5;
+	margin: 3px 3px 3px 3px;
+	padding: 2px 5px 2px 5px;
+	position:absolute;z-index:1000;
+	width:15em;
+	text-align:center;
+}
+
+                       

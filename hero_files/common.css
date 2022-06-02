@@ -1,0 +1,176 @@
+body,html {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    color:#555555;
+    font-size:90%;
+    background-color:#FFFFFF;
+}
+
+a:hover {
+    color:#DA251D;
+    text-decoration:none;
+}
+
+a{
+    color:#199BDC;
+    text-decoration:underline;
+}
+
+input.input_btn{
+font-size:12px;
+text-decoration:none;
+}
+
+
+.error{ color: red; }
+
+.success{ color: green;}
+
+h1, h2 {color:#105CB6;}
+
+.godville {
+    color:#105CB6; 
+    font-weight:normal;
+	margin:0;
+	padding:0;
+}
+
+
+h2 {
+    text-align: left;
+    margin-bottom: 1.0em;
+}
+
+#bookmarks{
+    background-color:#F6F6F9;
+    border:1px solid #CCCCCC;
+    bottom:0pt;
+    font-size:0.9em;
+    margin-top:2em;
+    padding: 0.3em;
+    clear:both;
+    text-align: center;
+}
+
+/*textarea:focus, input:focus, select:focus {
+      outline: medium solid #4096CF;
+}*/
+
+.pagination {
+		clear:both;
+        text-align: center;
+        font-weight:normal;
+        font-size:0.9em;
+}
+
+.markup-preview {
+    background:#F3F3F3 url(../images/preview.png) repeat scroll center;
+    border:1px solid #999999;
+    color:#000000;
+    height:158px;
+    margin:0.5em 0pt;
+    overflow:auto;
+    padding:0.5em;
+    width:90%;
+}
+
+blockquote{
+    border:1px solid #cda;
+    border-left:3px solid #9a7;
+    border-right:0;
+    background:#efc;
+    padding:1px 10px;
+    margin-left:0;	
+}
+
+pre{
+    font-size:1.2em;
+    background:#eee;
+    padding:5px 10px;
+    border:1px solid #ccc;
+    border-left:3px solid #ddd;
+    border-right:0;
+    overflow:auto;
+    font-family: "Monaco", "Bitstream Vera Sans Mono", "Courier New", serif;
+}
+
+
+div.editbox
+{
+    background:url(/images/forum/reply_background.png);
+    border:1px solid #999999;
+    border-width:1px 0;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:6px 0 7px;
+    z-index:50;
+    text-align: left;
+}
+
+div.editbox_iphone
+{
+    border:1px solid #999999;
+    border-width:1px 1px 1px 1px;	
+	margin-top:1em;
+    background:url(/images/forum/reply_background.png);
+    width:100%;
+    z-index:50;
+    text-align: left;
+}
+
+
+div.editbox .container
+{
+    width:92%;
+    margin:0 auto;
+    min-width:760px;
+}
+
+#menu_bar{
+    font-size: 90%;
+/*    background: #F6F6F9;*/
+    padding: 1em 0em 1em 0em;
+    padding-bottom: 1em;
+    text-align: center;
+/*    border: 1px solid #CCCCCC;*/
+    width: 100%;
+}
+
+#menu_bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu_bar li{
+    display: inline;
+}
+
+#menu_bar a:link, #menu_bar a:visited {
+/*    padding: 0.3em 1em 0.3em 1em;*/
+/*    background-color: #F0F0F3;*/
+    text-decoration: none;
+/*    border: 1px solid #CCCCCC;*/
+}
+
+#page_wrapper{
+    width:995px;
+    margin-left:auto;
+    margin-right:auto;
+    height:auto;
+}
+
+#title {
+    font-weight:bold;
+    color:#199BDC;
+    font-size:120%;
+    text-align: left;
+}
+
+.panth_c_t {
+}
+
+.panth_c_ch {
+	font-style:italic;
+}
